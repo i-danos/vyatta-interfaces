@@ -1,4 +1,14 @@
 #!/usr/bin/make -f
+
+# notify-intf/Makefile.am builds with "GOPATH=/usr/share/gocode go build",
+# i.e. GOPATH mode. Debian 13 ships Go 1.24, where module mode is the default
+# and the build fails before it starts:
+#
+#     go: go.mod file not found in current directory or any parent directory;
+#       see 'go help modules'
+#
+# Same treatment as libvci and configd, which already set this.
+export GO111MODULE=off
 #
 # This debian/rules uses debhelper.
 #
